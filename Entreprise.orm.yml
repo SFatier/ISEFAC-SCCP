@@ -1,0 +1,46 @@
+Isefac\Bundle\MainBundle\Entity\Entreprise:
+    type: entity
+    table: null
+    repositoryClass: Isefac\Bundle\MainBundle\Repository\EntrepriseRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nomEntreprise:
+            type: string
+            length: 255
+            column: nom_entreprise
+        adresse:
+            type: string
+            length: 255
+        codePostal:
+            type: string
+            length: '5'
+            column: code_postal
+        ville:
+            type: string
+            length: '10'
+        url:
+            type: string
+            length: 255
+        contactEntreprise:
+            type: string
+            length: 255
+            column: contact_entreprise
+        adresseEmail:
+            type: string
+            length: 255
+            column: adresse_email
+    manyToOne:
+        entreprise:
+            targetEntity: Entreprise
+            inversedBy: offres
+            joinColumns:
+                offre_id :
+                    referencedColumnName: id
+                    onDelete: CASCADE
+
+    lifecycleCallbacks: {  }
